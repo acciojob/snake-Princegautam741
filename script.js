@@ -1,36 +1,22 @@
 const gameContainer = document.getElementById('gameContainer');
-const gridSize = 40;
-let snake = [{ row: 20, col: 1 }]; // Initial position of the snake
+const gridSize = 40; // The number of pixels in each row and column
+const snake = [{ row: 20, col: 1 }]; // Initial position of the snake
 let food = { row: Math.floor(Math.random() * gridSize), col: Math.floor(Math.random() * gridSize) }; // Initial position of the food
 let direction = 'right'; // Initial direction of the snake
+let score = 0;
 
 function update() {
   // Update the snake's position based on the current direction
-  let head = { ...snake[0] };
+  const head = snake[0];
 
-  // Move the snake
-  switch (direction) {
-    case 'up':
-      head.row--;
-      break;
-    case 'down':
-      head.row++;
-      break;
-    case 'left':
-      head.col--;
-      break;
-    case 'right':
-      head.col++;
-      break;
-  }
-
-  // Add the new head
-  snake.unshift(head);
+  // Add code to move the snake according to the direction
 
   // Check if the snake has eaten the food
   if (head.row === food.row && head.col === food.col) {
     // Generate new food
     food = { row: Math.floor(Math.random() * gridSize), col: Math.floor(Math.random() * gridSize) };
+    score++;
+    document.getElementById('pointsEarned').innerText = score;
   } else {
     // Remove the tail of the snake
     snake.pop();

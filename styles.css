@@ -14,3 +14,9 @@
 .snakeBodyPixel {
   background-color: green;
 }
+
+.scoreBoard {
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+}
